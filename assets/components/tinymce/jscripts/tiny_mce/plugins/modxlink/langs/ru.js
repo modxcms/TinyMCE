@@ -1,3 +1,3 @@
 tinyMCE.addI18n('ru.modxlink',{
-    link_desc:"Insert/edit link"
+    link_desc:"Добавить/Изменить ссылку"
 });
