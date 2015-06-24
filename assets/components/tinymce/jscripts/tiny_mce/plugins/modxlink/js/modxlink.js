@@ -385,12 +385,14 @@ function getAnchorListHTML(id, target) {
 
 function insertAction() {
     var inst = tinyMCEPopup.editor;
-    var elm, elementArray, i;
+    var olm, elm, elementArray, i;
 
-    elm = inst.selection.getNode();
+    olm = inst.selection.getNode();
+    floatVal = olm.style.cssFloat;
+    olm.style.cssFloat = null;
     checkPrefix(document.forms[0].href);
 
-    elm = inst.dom.getParent(elm, "A");
+    elm = inst.dom.getParent(olm, "A");
 
     // Remove element if there is no href
     if (!document.forms[0].href.value) {
@@ -419,7 +421,7 @@ function insertAction() {
             setAllAttribs(elm = elementArray[i]);
     } else
         setAllAttribs(elm);
-
+    
     // Don't move caret if selection was image
     if (elm.childNodes.length != 1 || elm.firstChild.nodeName != 'IMG') {
         inst.focus();
@@ -427,7 +429,9 @@ function insertAction() {
         inst.selection.collapse(0);
         tinyMCEPopup.storeSelection();
     }
-
+    if(floatVal)
+        olm.style.cssFloat = floatVal;
+    
     tinyMCEPopup.execCommand("mceEndUndoLevel");
     tinyMCEPopup.close();
 }
