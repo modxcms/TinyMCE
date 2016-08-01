@@ -148,21 +148,19 @@ class TinyMCE {
             $this->modx->getVersionData();
             $inRevo20 = (boolean)version_compare($this->modx->version['full_version'],'2.1.0-rc1','<');
 
-            $this->modx->regClientStartupScript($this->config['assetsUrl'].'jscripts/tiny_mce/'.$scriptFile);
-            $this->modx->regClientStartupScript($this->config['assetsUrl'].'xconfig.js');
+            $this->modx->controller->addJavascript($this->config['assetsUrl'].'jscripts/tiny_mce/'.$scriptFile);
+            $this->modx->controller->addJavascript($this->config['assetsUrl'].'xconfig.js');
             if ($compressJs) {
-                $this->modx->regClientStartupScript($this->config['assetsUrl'].'tiny.min.js');
+                $this->modx->controller->addJavascript($this->config['assetsUrl'].'tiny.min.js');
             } else {
-                $this->modx->regClientStartupScript($this->config['assetsUrl'].'tiny.js');
+                $this->modx->controller->addJavascript($this->config['assetsUrl'].'tiny.js');
             }
 
             $source = $this->context->getOption('default_media_source',1);
-            $this->modx->regClientStartupHTMLBlock('<script type="text/javascript">' . "\n//<![CDATA[" .  "\nvar inRevo20 = ".($inRevo20 ? 1 : 0).";MODx.source = '".$source."';Tiny.lang = "  . $this->modx->toJSON($lang). ';' . "\n//]]>" . "\n</script>");
+            $this->modx->controller->addHtml('<script type="text/javascript">' . "\n//<![CDATA[" .  "\nvar inRevo20 = ".($inRevo20 ? 1 : 0).";MODx.source = '".$source."';Tiny.lang = "  . $this->modx->toJSON($lang). ';' . "\n//]]>" . "\n</script>");
             if (!$compressJs) {
-                $this->modx->regClientStartupScript($this->config['assetsUrl'].'tinymce.panel.js');
+                $this->modx->controller->addJavascript($this->config['assetsUrl'].'tinymce.panel.js');
             }
-
-
             $this->jsLoaded = true;
         }
         return $this->getScript();
@@ -228,12 +226,9 @@ class TinyMCE {
                 unset($this->properties['elements']);
                 $richtextResource = false; /* workaround for modx ui bug with rte tvs */
             }
-            $this->config['resource'] = $this->config['resource']->toArray();
         }
         $templates = $this->getTemplateList();
 
-        /* get formats */
-        //$this->properties['formats'] = $this->getFormats();
         /* get JS */
         unset($this->properties['resource']);
         ob_start();
@@ -241,8 +236,7 @@ class TinyMCE {
         $script = ob_get_contents();
         ob_end_clean();
 
-        /* will need to do $this->modx->controller->addHtml() for Revo 2.2+ */
-        $this->modx->regClientStartupHTMLBlock($script);
+        $this->modx->controller->addHtml($script);
         return '';
     }
 

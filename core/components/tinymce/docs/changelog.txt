@@ -2,6 +2,10 @@
 This file shows the changes in recent releases of TinyMCE for MODx. The most current release is usually the 
 development release, and is only shown to give an idea of what's currently in the pipeline.
 
+TinyMCE 4.3.4
+====================================
+- Use modx->controller->addJavascript/addHtml/etc to fix issue in MODX Revolution 2.5.1
+
 TinyMCE 4.3.3
 ====================================
 - Change popup windows to more convenient modals
