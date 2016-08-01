@@ -4,6 +4,7 @@ development release, and is only shown to give an idea of what's currently in th
 
 TinyMCE 4.3.4
 ====================================
+- Fix cancel button not actually closing the popup window
 - Use modx->controller->addJavascript/addHtml/etc to fix issue in MODX Revolution 2.5.1
 
 TinyMCE 4.3.3
