@@ -14,7 +14,7 @@ set_time_limit(0);
 /* define package */
 define('PKG_NAME','TinyMCE');
 define('PKG_NAMESPACE','tinymce');
-define('PKG_VERSION','4.3.3');
+define('PKG_VERSION','4.3.4');
 define('PKG_RELEASE','pl');
 
 /* define sources */
@@ -43,7 +43,7 @@ $modx->setLogTarget('ECHO');
 $modx->loadClass('transport.modPackageBuilder','',false, true);
 $builder = new modPackageBuilder($modx);
 $builder->createPackage(PKG_NAMESPACE,PKG_VERSION,PKG_RELEASE);
-$builder->registerNamespace(PKG_NAMESPACE,false,true,'{core_path}components/'.PKG_NAMESPACE.'/');
+$builder->registerNamespace(PKG_NAMESPACE,false,true,'{core_path}components/'.PKG_NAMESPACE.'/','{assets_path}components/'.PKG_NAMESPACE.'/');
 
 /* create the plugin object */
 $plugin= $modx->newObject('modPlugin');
@@ -123,6 +123,8 @@ unset($settings,$setting);
 $modx->log(xPDO::LOG_LEVEL_INFO,'Setting Package Attributes...'); flush();
 $builder->setPackageAttributes(array(
     'license' => file_get_contents($sources['docs'] . 'license.txt'),
+    'changelog' => file_get_contents($sources['docs'] . 'changelog.txt'),
+    'readme' => file_get_contents($sources['docs'] . 'readme.txt'),
 ));
 
 $modx->log(xPDO::LOG_LEVEL_INFO,'Zipping up package...'); flush();
