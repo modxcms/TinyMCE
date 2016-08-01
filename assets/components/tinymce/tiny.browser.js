@@ -16,21 +16,11 @@ Tiny.browserCallback = function(data) {
                 win.ImageDialog.showPreviewImage(url);
             }
         
-            /* close */
-            this.close();
-        },
-        close: function () {
             /* close popup window */
             tinyMCEPopup.close();
             win.focus(); win.document.focus();
         }
     };
-
-    if (data === null) {
-        FileBrowserDialogue.close();
-        return;
-    }
-    
     var fileUrl;
     if (inRevo20) {
         fileUrl = unescape(data.relativeUrl);
