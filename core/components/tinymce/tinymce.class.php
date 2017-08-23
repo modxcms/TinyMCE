@@ -93,7 +93,7 @@ class TinyMCE {
             'css_path' => $this->context->getOption('editor_css_path','',$this->properties),
             'directionality' => $this->context->getOption('manager_direction','ltr',$this->properties),
             'element_format' => $this->context->getOption('tiny.element_format','xhtml',$this->properties),
-            'entity_encoding' => $this->context->getOption('tiny.element_format','named',$this->properties),
+            'entity_encoding' => $this->context->getOption('tiny.entity_encoding','named',$this->properties),
             'fix_nesting' => $this->context->getOption('tiny.fix_nesting',false,$this->properties),
             'fix_table_elements' => $this->context->getOption('tiny.fix_table_elements',false,$this->properties),
             'font_size_classes' => $this->context->getOption('tiny.font_size_classes','',$this->properties),
