@@ -92,8 +92,8 @@ var Tiny = {
 	    switch (type) {
             case "get_from_editor":
             case "insert_to_editor":
-                var regexp = /(\[\[[^\]]*)&amp;([^\[]*\]\])/g;
-                value = value.replace(regexp,'$1&$2');
+                var regexp = /&amp;([^=`]*=`[^`]*`)/g;
+                value = value.replace(regexp,'&$1');
             break;
             case "submit_content":
                 //value.innerHTML = value.innerHTML.replace('&amp;','&');
