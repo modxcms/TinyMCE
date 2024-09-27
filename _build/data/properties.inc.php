@@ -105,6 +105,13 @@ $properties = array(
         'value' => '',
     ),
     array(
+        'name' => 'entities',
+        'desc' => 'This option contains a comma separated list of entity names that is used instead of characters.',
+        'type' => 'textfield',
+        'options' => '',
+        'value' => '',
+    ),
+    array(
         'name' => 'force_p_newlines',
         'desc' => 'This option enables you to disable/enable the creation of paragraphs on return/enter in Mozilla/Firefox. The default value of this option is true. ',
         'type' => 'combo-boolean',

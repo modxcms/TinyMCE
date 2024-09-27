@@ -122,6 +122,15 @@ $settings['tiny.entity_encoding']->fromArray(array(
     'area' => 'cleanup-output',
 ),'',true,true);
 
+$settings['tiny.entities']= $modx->newObject('modSystemSetting');
+$settings['tiny.entities']->fromArray(array(
+    'key' => 'tiny.entities',
+    'value' => '',
+    'xtype' => 'textfield',
+    'namespace' => 'tinymce',
+    'area' => 'cleanup-output',
+),'',true,true);
+
 $settings['tiny.fix_nesting']= $modx->newObject('modSystemSetting');
 $settings['tiny.fix_nesting']->fromArray(array(
     'key' => 'tiny.fix_nesting',
